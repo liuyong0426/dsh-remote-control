@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 用法问题 / 想法讨论
+    url: https://github.com/liuyong0426/dsh-remote-control/discussions
+    about: 不是 bug 的问题请到 Discussions，别开 issue。
+  - name: 报告安全漏洞（私密）
+    url: https://github.com/liuyong0426/dsh-remote-control/security/advisories/new
+    about: 请不要把安全漏洞发到公开 issue，走私密渠道或看 SECURITY.md。

@@ -1,0 +1,4 @@
+- insert:
+    - id: liuyong0426-remote-control
+      name: '@liuyong0426/dsh-remote-control'
+      config: {}

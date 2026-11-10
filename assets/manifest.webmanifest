@@ -1,0 +1,17 @@
+{
+  "name": "DSH 远程",
+  "short_name": "DSH 远程",
+  "description": "在手机上接着用电脑上的 DSH：看会话、发消息、批确认。",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#111827",
+  "theme_color": "#111827",
+  "icons": [
+    { "src": "/rc-app/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/rc-app/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/rc-app/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

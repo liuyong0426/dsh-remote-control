@@ -1,0 +1,21 @@
+# 统一换行，避免 Windows / Linux 上 CI 与 diff 打架
+* text=auto eol=lf
+
+# 二进制资源，别让 git 当文本改
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.tgz binary
+*.wav binary
+*.mp3 binary
+
+# 锁文件按文本处理，但不参与合并冲突的自动解决
+pnpm-lock.yaml linguist-generated=true
+
+# 导出源码包时不需要的东西（仓库里仍然保留）
+.github/ export-ignore
+.qa-edge-smoke.mjs export-ignore
+screenshots.json export-ignore

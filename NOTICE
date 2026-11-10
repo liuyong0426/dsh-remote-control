@@ -1,0 +1,45 @@
+# NOTICE — 归属与第三方声明
+
+本文件随 dsh-remote-control 的源码与 npm 包一同分发，说明代码与资源的归属。它是 [LICENSE](LICENSE)（MIT）的补充说明，不授予额外权利。
+
+## 原始版权声明
+
+本仓库基于一个更早的公开代码快照继续维护。该快照以 MIT 许可证发布，LICENSE 中的版权行为：
+
+> Copyright (c) 2026 Copy
+
+MIT 许可证要求「上述版权声明和本许可声明应包含在本软件的所有副本或实质性部分中」，因此该行连同完整许可文本一并保留，未作删改。
+
+- 早期公开仓库：<https://github.com/copylee711/dsh-remote-control>（MIT，最后一个公开标签 `v0.2.9`）
+- 早期 npm 包：`@copylee/dsh-remote-control@0.2.9`
+
+本仓库不主张拥有 `copylee711` 账号、`@copylee` npm scope 或上述仓库；也不对该账号与本仓库维护者之间的关系作任何法律结论。技术比对与边界见 [docs/provenance.md](docs/provenance.md)。
+
+## 本仓库的维护与新增部分
+
+0.3.0 之后的持续迭代在本仓库维护，相应版权行为：
+
+> Copyright (c) 2026 liuyong0426
+
+## 保留的旧标识（兼容用，不是署名）
+
+以下字符串是早期版本写进浏览器 `localStorage`、DOM 与事件名里的**协议键／面板 id**。同套 DSH 插件靠它们共享强调色设置，已安装的用户配置也存在这些键下；改名会让设置丢失、兄弟插件配色不同步，所以按原样保留：
+
+- `copylee.dsh.accent`、`copylee-dsh-accent`、`copylee.dsh.accent.remote-control`
+- `agentworkrecords/` 里出现的旧包名、旧账号字样（原始工作记录，保持原样以便复核）
+
+当前对外身份是包名 `@liuyong0426/dsh-remote-control` 与插件 id `liuyong0426-remote-control`。
+
+## 截图与其他资源
+
+`assets/` 下用于 README 展示的截图（`phone.png`、`phone-sidebar.png`、`desktop-panel.png`、`pair-request.png`）由本仓库维护者用自己的 DSH 环境截取，并对电脑面板上的配对二维码、手机侧栏里的头像与昵称做了马赛克处理；它们不属于早期公开快照，版权行为 `Copyright (c) 2026 liuyong0426`，随本仓库以 MIT 分发。
+
+早期公开快照 `v0.2.9` 里原有的三张同名截图（`phone.png` 137591 字节、`desktop-panel.png` 77494 字节、`pair-request.png` 96709 字节）已在 2026-11-10 被上述自有截图替换，不再随本仓库分发；如需核对，可按 [docs/provenance.md](docs/provenance.md) 里的方法从公开仓库取回。`assets/` 下的 PWA 图标（`apple-touch-icon.png`、`icon-192.png`、`icon-512.png`、`icon-maskable-512.png`）与 `manifest.webmanifest` 为本项目新增。
+
+## 参考项目与运行时依赖
+
+实现时参考了 dsh-remote-web-ui、DSH Remote 与 untun（见 [README](README.md)「致谢」），本项目不使用这些项目作者的中继服务。运行时依赖及许可证在构建时由 `tsdown.config.ts` 的 `bundled-runtime-licenses` 插件汇总为 `lib/LICENSES.txt`；各依赖自身的许可文本随其分发。
+
+## 联系
+
+维护者：<https://github.com/liuyong0426>。许可或归属相关的问题请在仓库开 issue；涉及安全漏洞请走 [SECURITY.md](SECURITY.md) 里的私密渠道。

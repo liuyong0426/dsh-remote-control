@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "如果你在论文、作业或项目里用到了这个插件，欢迎按下面方式引用。"
+type: software
+title: "dsh-remote-control"
+abstract: "DeepSeek Harness（DSH）的远程控制插件：手机扫码、本机确认配对，用手机浏览器继续电脑上的会话、处理审批、查看文件和管理设置。"
+authors:
+  - name: "liuyong0426"
+    website: "https://github.com/liuyong0426"
+version: 0.4.2
+license: MIT
+repository-code: "https://github.com/liuyong0426/dsh-remote-control"
+url: "https://github.com/liuyong0426/dsh-remote-control"
+keywords:
+  - dsh
+  - dsh-plugin
+  - remote-control
+  - untun
+  - qrcode
