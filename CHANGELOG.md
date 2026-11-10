@@ -18,6 +18,7 @@
 - 维护身份、npm 包名、仓库链接、插件 id 由早期账号切换为 `liuyong0426`；原始 MIT 版权声明 `Copyright (c) 2026 Copy` 原样保留。
 - 与兄弟插件共享的 `localStorage`／事件协议键保留不动（见 `NOTICE`）。
 - README 展示图从早期公开快照的三张截图**全部替换**为上述自有截图；`NOTICE` 与 `docs/provenance.md` 里的截图来源说明同步更新（旧图不再随仓库分发，可按 `docs/provenance.md` 的方法从公开 `v0.2.9` 取回核对）。
+- README 的「从 QQ / IM 机器人重连」一节改为**通用说法**：不再要求安装 `dafeiyu-qq`，任何能把消息交给插件的 IM 机器人（QQ 机器人、QQ 助手、QQ 个人号机器人、飞书／钉钉／企微机器人等）都生效，并补上两个接入入口（Cordis 服务 `dshRemoteControl` 与进程全局 `__dshRcSay`）供其它机器人作者对接。
 - 两个 DSH profile（桌面版 `desktop`、懒人版 `web`）的依赖名与 bundles 由 `@copylee/dsh-remote-control` 统一为 `@liuyong0426/dsh-remote-control`，`pnpm-lock.yaml` 同步。
 
 ## [0.4.2] — 当前源码版本（本地迭代，未打标签）

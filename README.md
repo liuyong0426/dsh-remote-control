@@ -38,7 +38,7 @@ Remote control for DeepSeek Harness (DSH): scan a QR code with your phone, confi
 | 强调色 | 陶土橙、蓝色、黑色三选一，电脑面板、配对页、手机界面以及同套 DSH 插件共用同一个选择 |
 | 完成提醒 | 会话在后台跑完或停下来等你处理时，会话列表显示小圆点（实心＝已完成，空心＝在等你答），页签标题带上条数。在电脑设置页打开「完成提醒」后，切到别的页面时会再弹一条系统通知并轻震一下；通知需要安全连接，局域网 http 下只有页内圆点和页签计数 |
 | 添加到主屏幕 | 配对页和远程页带自己的名字「DSH 远程」和 PNG 图标（含 iOS 用的 180px 图标），从 Safari／Chrome 添加到主屏幕后是独立图标，不会装成宿主的「DeepSeek Harness」 |
-| 掉线后从 QQ / IM 重连 | 装了 QQ 机器人插件（如 `dafeiyu-qq`）时，在 QQ 里对机器人发一句「重连」或「远程状态」，插件会把新的配对链接和二维码直接发到聊天里，并**自动放行一次**扫码——不用回电脑点「允许连接」。详见 [从 QQ / IM 机器人重连](#从-qq--im-机器人重连) |
+| 掉线后从 QQ / IM 重连 | 只要你的 IM 机器人（QQ 机器人、QQ 助手、个人号机器人、飞书／钉钉／企微机器人等）能把聊天消息交给插件，在聊天里发一句「重连」或「远程状态」，插件就会把新的配对链接和二维码发到聊天里，并**自动放行一次**扫码——不用回电脑点「允许连接」。不限定某个特定机器人，也不要求装 `dafeiyu-qq`。详见 [从 QQ / IM 机器人重连](#从-qq--im-机器人重连) |
 
 ## 安装
 
@@ -101,11 +101,13 @@ dsh plugin --profile web add @liuyong0426/dsh-remote-control@latest
 
 ### 从 QQ / IM 机器人重连
 
-“任意网络”每次开启都会换一个新地址，掉线后原来的链接就失效了；人在外面时，往往还得回到电脑跟前点一下「开启」再扫码确认。装一个 QQ 机器人插件就能省掉这一步：
+“任意网络”每次开启都会换一个新地址，掉线后原来的链接就失效了；人在外面时，往往还得回到电脑跟前点一下「开启」再扫码确认。如果电脑上装了 IM 机器人（QQ 机器人、QQ 助手、QQ 个人号机器人，或者飞书／钉钉／企微等其它 IM 机器人），就能省掉这一步。
 
-1. 电脑上装好 `dafeiyu-qq`（或其他打通了同一道门的 IM 插件），并绑定到自己的 QQ 号。
-2. 在 QQ 里对机器人发一句 **「重连」**（也认「重新连接」「远程重连」「远程掉线了」「reconnect」「rc」）。想先看看状态就发 **「远程状态」**（也认「远程连接」「remote status」）。
-3. 插件在后台判断隧道是否还活着：好的就沿用旧地址，坏的就重开一条；等新地址生效后**重新生成配对二维码**，由 QQ 机器人把二维码图片和链接一起发回聊天。
+**不限定某个特定机器人。** 插件不绑定任何一家 IM 实现，只要求「机器人收到消息后，把这句话交给插件问一句」——QQ 机器人、QQ 助手、个人号机器人、第三方 IM 机器人都可以，**不需要装 `dafeiyu-qq`**，装了别的机器人同样生效（`dafeiyu-qq` 只是目前已知接好了这条通道的一个例子）。
+
+1. 电脑上装好任意一个 IM 机器人插件，并绑定到自己的账号（QQ 号、飞书、钉钉、企微等，取决于那个机器人插件）。
+2. 在聊天里对机器人发一句 **「重连」**（也认「重新连接」「远程重连」「远程掉线了」「reconnect」「rc」）。想先看看状态就发 **「远程状态」**（也认「远程连接」「remote status」）。
+3. 插件在后台判断隧道是否还活着：好的就沿用旧地址，坏的就重开一条；等新地址生效后**重新生成配对二维码**，由机器人把二维码图片和链接一起发回聊天。
 4. 手机直接点链接或扫聊天里的码，**5 分钟内点开就自动通过**，不用回电脑点「允许连接」；过期了再发一次「重连」即可。
 
 几条边界，写清楚免得误解：
@@ -113,7 +115,10 @@ dsh plugin --profile web add @liuyong0426/dsh-remote-control@latest
 - 自动放行**只对一次扫码生效**：插件只批准第一个到达的配对请求，批准后立即撤销这道门；5 分钟没扫就自动作废。窗口、审批弹窗等其它环节仍然照旧，不会自动同意。
 - 这道门是插件自己开的，只在这条「IM 里要来的重连」路径上生效；平时在电脑面板上手动开启的连接不会自动批准任何设备。
 - **没有“远程截图”功能**：发「二维码 / 扫码 / 截图」时，机器人发的是插件**自己画出来的配对二维码图片**，不是电脑屏幕截图。插件不提供、也不打算提供截屏能力。
-- 只有装了 IM 机器人插件、并且机器人把这句话交给插件时才生效；没装的话，发这些词不会有什么特别反应。机器人本身的安装、登录和授权属于那个插件的范围，本插件只负责「开门、出码、放行一次」。
+- 生效的前提只有一条：**机器人把这句话交给插件**。插件对外开了两个入口，任何机器人插件（自己写也行）用其中一个接上就生效：
+  - 同进程插件：`const rc = ctx.get('dshRemoteControl')`，然后调用 `await rc.status()` / `await rc.reconnect()` / `await rc.fresh()` / `await rc.arm(5)` 等方法（完整签名见 `src/index.ts` 的 `RemoteControlService`）。
+  - 拿不到 service registry 的 bundle：调用 `globalThis.__dshRcSay(text)`，它只认上面那几句指令，其它文本返回 `undefined`，交还给机器人自己处理。
+  - 如果机器人插件没接这两个入口之一，发这些词不会有特别反应；机器人本身的安装、登录和授权属于那个插件的范围，本插件只负责「开门、出码、放行一次」。用之前可以先问一下机器人作者有没有接 `dshRemoteControl` 服务或 `__dshRcSay` 钩子。
 
 ### 连接不上时
 
@@ -217,7 +222,7 @@ Remote control for DeepSeek Harness (DSH). Scan a QR code with your phone, appro
 | Accent colour | Terracotta, blue or black, shared by the desktop panel, pairing page, phone UI and sibling DSH plugins |
 | Completion badges | Sessions that finished in the background or are waiting for you get a dot in the list (filled = done, hollow = waiting) and a count in the tab title. With **Completion notifications** enabled in the desktop settings you also get a system notification and a haptic tap when you switch away; notifications need a secure connection, so over plain-HTTP LAN you only get the dot and the count |
 | Add to home screen | The pairing and remote pages ship their own name ("DSH 远程") and PNG icons (including the 180 px iOS one), so adding them to the home screen gives a separate app rather than the host's "DeepSeek Harness" |
-| Reconnect from QQ / IM | With a QQ bot plugin such as `dafeiyu-qq` installed, sending the bot "重连" (reconnect) or "远程状态" (status) in QQ makes the plugin post a fresh pairing link and QR code into the chat and **auto-approve one scan** — no trip back to the computer. See [Reconnecting from QQ / IM](#reconnecting-from-qq--im) |
+| Reconnect from QQ / IM | As long as your IM bot (a QQ bot, a QQ assistant, a personal-account bot, a Feishu / DingTalk / WeCom bot, …) can hand the chat message to the plugin, sending "重连" (reconnect) or "远程状态" (status) in the chat makes the plugin post a fresh pairing link and QR code into the chat and **auto-approve one scan** — no trip back to the computer. No particular bot is required and `dafeiyu-qq` is not needed. See [Reconnecting from QQ / IM](#reconnecting-from-qq--im) |
 
 ### Install
 
@@ -280,10 +285,12 @@ To add a computer that is not at hand, tap **Add another computer** in the list 
 
 #### Reconnecting from QQ / IM
 
-**Any network** changes address on every start, so a dropped link is dead; and when you are away from the computer you would otherwise have to walk back, click Enable and confirm the scan. A QQ bot plugin removes that trip:
+**Any network** changes address on every start, so a dropped link is dead; and when you are away from the computer you would otherwise have to walk back, click Enable and confirm the scan. An IM bot on the computer removes that trip.
 
-1. Install `dafeiyu-qq` (or another IM plugin wired to the same door) on the computer and bind it to your own QQ account.
-2. In QQ, send the bot **"重连"** (reconnect; also accepts 重新连接, 远程重连, 远程掉线了, reconnect, rc). To check first, send **"远程状态"** (also 远程连接, remote status).
+**No particular bot is required.** The plugin does not bind to any one IM product: it only needs a bot that hands an incoming message to the plugin. A QQ bot, a QQ assistant, a personal-account bot or any third-party IM bot all work — **`dafeiyu-qq` is not needed**, other bots work just as well (`dafeiyu-qq` is merely the one implementation known to have wired this door so far).
+
+1. Install any IM bot plugin on the computer and bind it to your own account (QQ, Feishu, DingTalk, WeCom — whatever that bot supports).
+2. In the chat, send the bot **"重连"** (reconnect; also accepts 重新连接, 远程重连, 远程掉线了, reconnect, rc). To check first, send **"远程状态"** (also 远程连接, remote status).
 3. The plugin checks whether the tunnel is still alive: a healthy one keeps its address, a broken one is replaced. Once the new address is live it draws a **fresh pairing QR code** and the bot posts the image plus the link into the chat.
 4. Tap the link or scan the code on the phone: **opening it within five minutes is approved automatically**, with no click on the computer. If it expires, send "重连" again.
 
@@ -292,7 +299,10 @@ Boundaries, so nothing is misunderstood:
 - The automatic approval covers **exactly one scan**: the plugin approves the first pairing request that arrives and immediately disarms; if nothing scans within five minutes the window expires. Windows, approval dialogs and everything else behave as usual — nothing else is auto-accepted.
 - That door is opened by the plugin itself and only on this "reconnect requested from IM" path; connections you start by hand in the desktop panel never auto-approve any device.
 - **There is no remote-screenshot feature.** Saying "二维码 / 扫码 / 截图" makes the bot send the pairing QR code the plugin drew itself — not a screenshot of the computer. The plugin neither has nor plans screen capture.
-- This only works when an IM bot plugin is installed and hands that text to the plugin. Installing, logging in and authorizing the bot are that plugin's business; this plugin only opens the door, draws the code and approves one scan.
+- The only requirement is that **the bot hands the text to the plugin**. Two entry points are exposed, and any bot plugin (including one you write yourself) works by calling either:
+  - In-process plugins: `const rc = ctx.get('dshRemoteControl')`, then `await rc.status()` / `await rc.reconnect()` / `await rc.fresh()` / `await rc.arm(5)` and the rest of `RemoteControlService` (full signature in `src/index.ts`).
+  - Bundles that cannot reach this process's service registry: call `globalThis.__dshRcSay(text)`. It answers only the phrases above and returns `undefined` for anything else, so the bot can keep handling that text itself.
+  - If the bot plugin wires neither, those words do nothing special. Installing, logging in and authorizing the bot are that plugin's business; this plugin only opens the door, draws the code and approves one scan. When in doubt, ask the bot's author whether it calls the `dshRemoteControl` service or the `__dshRcSay` hook.
 
 #### When it will not connect
 
